@@ -1,1 +1,40 @@
-
+import random
+secret_code=random.randint(1000,9999)
+secret_code=str(secret_code)
+guessed_it=False
+present=[]
+correct=[]
+print("Welcome to the code guessing game\nWe have a 4 digit code that needs to be cracked in 10 attemps")
+print("NOTE : The code cannot start with a zero ")
+attemps=10
+while attemps>0:
+    user_code=input("Enter your code :")
+    if user_code==secret_code:
+        print("congrats you guessed it right")
+        guessed_it=True
+        break
+    else:
+        index=0
+        for i in user_code:
+            if i in secret_code:
+                if i not in present:
+                    present.append(i)      
+            if i==secret_code[index]:
+                correct.append(i)
+            index = index + 1
+        if len(present)==0:
+            print("None of the digits in your code is present in the secret code")
+        else:
+            print(f"{present} are present in code")
+        if len(correct)==0:
+            print("None of the digits are in the correct place")
+        else:
+            print(f"{correct} are in the correct place")  
+        present.clear()
+        correct.clear()    
+    attemps-=1
+    print(f"you have {attemps} attemps left")
+if not guessed_it:
+    print("you lost,better luck next time")
+    print("the secret code was",secret_code)
+print("Game Over!!")
