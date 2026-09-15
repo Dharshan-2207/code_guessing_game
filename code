@@ -1,11 +1,13 @@
 import random
-secret_code=random.randint(1000,9999)
+secret_code=random.randint(0,9999)
 secret_code=str(secret_code)
+l=4
+start = "0" * (l-len(secret_code))
+secret_code = start + secret_code
 guessed_it=False
 present=[]
 correct=[]
 print("Welcome to the code guessing game\nWe have a 4 digit code that needs to be cracked in 10 attemps")
-print("NOTE : The code cannot start with a zero ")
 attemps=10
 while attemps>0:
     user_code=input("Enter your code :")
